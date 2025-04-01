@@ -6,7 +6,12 @@ phases:
       - echo Logging in to Amazon ECR...
       - echo DALEEEEE CARAAAAAAIO
       - pip install -r requirements.txt
-      
+
+  test:
+    commands:
+      - echo Build phase...
+      - python unittest.py
+
 artifacts:
   files:
     - '**/*'
