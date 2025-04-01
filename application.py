@@ -1,5 +1,5 @@
 import funtions as f
-from flask import Flask, jsonify
+from flask import Flask, jsonify, abort
 
 application = Flask(__name__)
 data = f.load_file('./heroes.csv')
@@ -10,6 +10,8 @@ def index():
 
 @application.route("/<string:id>")
 def heroe(id):
+    if id not in data:
+        abort(404)
     return jsonify(data[id])
 
 if __name__ == "__main__":
